@@ -7,7 +7,7 @@ import (
 	"encoding/pem"
 	"testing"
 
-	"github.com/spilikin/go-brainpoll/x509brainpool"
+	"github.com/spilikin/go-brainpool/x509brainpool"
 )
 
 // sample keys and certificates from https://github.com/gematik/erp-e2e-testsuite
@@ -38,35 +38,6 @@ Y2gwMTAgBgNVHSAEGTAXMAoGCCqCFABMBIEjMAkGByqCFABMBE0wCgYIKoZIzj0E
 AwIDSAAwRQIgWlSdCIw6Z6alM+dGnA4vfkxDoViIqJMw/PH4U0VUmNsCIQCcX9UW
 JnSDBKGp4nZTcuozRPsJK47cBkil0x6Zrkoxkg==
 -----END CERTIFICATE-----`)
-
-func TestBrainpool(t *testing.T) {
-	priv, err := ecdsa.GenerateKey(x509brainpool.P256r1(), rand.Reader)
-	if err != nil {
-		t.Fatal(err)
-	}
-	t.Log(priv)
-
-	pemBlock, _ := pem.Decode(testKeyBytes)
-	if pemBlock == nil {
-		t.Fatal("failed to decode PEM block containing private key")
-	}
-
-	priv2, err := x509brainpool.ParseECPrivateKey(pemBlock.Bytes)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	pemBlock, _ = pem.Decode(testCertBytes)
-
-	cert, err := ParseCertificate(pemBlock.Bytes)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	t.Log(cert)
-
-	t.Log(priv2)
-}
 
 func TestSignature(t *testing.T) {
 	priv, err := parsePEMKey(testKeyBytes)
