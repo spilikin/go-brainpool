@@ -1,4 +1,4 @@
-package main
+package brainpool
 
 import (
 	"crypto/elliptic"

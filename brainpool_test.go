@@ -1,4 +1,4 @@
-package main
+package brainpool_test
 
 import (
 	"crypto/ecdsa"
@@ -7,7 +7,7 @@ import (
 	"encoding/pem"
 	"testing"
 
-	"github.com/spilikin/go-brainpool/x509brainpool"
+	"github.com/spilikin/go-brainpool"
 )
 
 // sample keys and certificates from https://github.com/gematik/erp-e2e-testsuite
@@ -72,7 +72,7 @@ func parsePEMKey(pemBytes []byte) (*ecdsa.PrivateKey, error) {
 		return nil, nil
 	}
 
-	return x509brainpool.ParseECPrivateKey(pemBlock.Bytes)
+	return brainpool.ParseECPrivateKey(pemBlock.Bytes)
 }
 
 func parsePEMCert(pemBytes []byte) (*x509.Certificate, error) {
@@ -81,5 +81,5 @@ func parsePEMCert(pemBytes []byte) (*x509.Certificate, error) {
 		return nil, nil
 	}
 
-	return ParseCertificate(pemBlock.Bytes)
+	return brainpool.ParseCertificate(pemBlock.Bytes)
 }

@@ -2,7 +2,7 @@
 // Implementation of rcurves is from github.com/ebfe/brainpool
 // Note that these curves are implemented with naive, non-constant time operations
 // and are likely not suitable for enviroments where timing attacks are a concern.
-package main
+package brainpool
 
 import (
 	"crypto/elliptic"
