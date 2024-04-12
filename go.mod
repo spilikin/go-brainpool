@@ -1,4 +1,4 @@
-module github.com/spilikin/go-brainpoll
+module github.com/spilikin/go-brainpool
 
 go 1.22.2
 
